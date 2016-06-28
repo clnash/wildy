@@ -1,0 +1,18 @@
+.results{
+    padding:10px;
+    
+    
+}
+
+.results h4{
+    display:inline-block;
+    position: absolute;
+    margin-top:0px;
+    margin-left:10px;
+    
+}
+
+.results img{
+    
+    display:inline-block;
+}

@@ -4,6 +4,9 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
+//adding use of public folder
+app.use(express.static('public'));
+
 //add some campgrounds to campground page
 var campgrounds = [
     {name: "Kachess Lake", image:"http://www.kachessridgeresort.com/uploads/1/0/2/5/10252907/1325803461.jpg"},
