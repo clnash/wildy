@@ -1,19 +1,38 @@
-<% include partials/header %>
-<div class="container">
-    <header class="jumbotron">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to Wildy!</title>
+        
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />   
+    <link rel="stylesheet" href="app.css" type="text/css" >
+    </head>
+<body id="landing-bg">
+    <div id="landing-container">
+        <h1>Welcome to Wildy!</h1>
+        <h4>Find your next adventure here!</h4>
     
-    
-    </header>
-
-<h1>Wildy Base Camp!</h1>
-
-
-<p>This will all look much more beautiful so soon!</p>
+            <p>This will all look much more beautiful so soon!</p>
 
 
 
-<p>While you're waiting, check out these cool <a href="/campgrounds">camp sites!</a></p>
-</div>
+            <p>While you're waiting, check out these cool <a href="/campgrounds">camp sites!</a></p>
+            
+            <div class="form-wrapper">
+                <h2>Sign In!</h2>
+                <form>
+                    <input class="login-input" type="text" placeholder=" email" name="email"/>
+                    <input class="login-input" type="text" placeholder=" password" name="password"/>
+                    <button class="btn-login">Login</button>
+                </form>
+                <h5>Don't have an account? <a href="#">Create one here!</a></h5>
+            </div>
+
+    </div>
+
+
+
+
+
 
 
 <% include partials/footer %>
