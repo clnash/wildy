@@ -1,15 +1,39 @@
-<%include partials/header %>
+<% include partials/header %>
 
-<h1>Add a campground!</h1>
-<form method="POST" action="/campgrounds">
-    <input name="name" type="text" placeholder="name"/>
-    <input name="image" type="text" placeholder="imageURL"/>
-    <button>Submit</button>    
-    
-</form>
+
+    <div class="container">
+        <div class="row">
+        
+               <h2 style="text-align:center;">We need your help to share great campsites!</h2>
+               <h4 style="text-align:center;">Add your favorite stomping grounds to Wildy and share it with others.</h4>
+            
+                <div style="width:30%; margin:30px auto;">   
+                
+                
+                    <form action="/campgrounds" method="POST">
+                        
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name" placeholder="Name">
+                        </div> 
+                        
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="image" placeholder="Image URL (http://...)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-large btn-primary btn-block">Add Campground</button>
+                        </div>
+                        
+                    </form>
+                    <a href="/campgrounds">Go Back</a>
+                </div>
+        </div>
+    </div>
+
+
 <hr/>
 </br>
-<a href="/campgrounds">View Campgrounds</a>
+
 
 
 <%include partials/footer %>
