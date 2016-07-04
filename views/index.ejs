@@ -17,7 +17,14 @@
 
     <div class="results">
        <img src=" <%= campground.image %>" width ="100px;" height= "100px"/> 
-       <h4> <%= index+= 1 %>. <%= campground.name %></h4>
+       <h4><%= index+= 1 %>. 
+           <a href="/campgrounds/<%= campground._id %>" >
+                <%= campground.name %>
+           </a>
+       </h4>
+       
+       <P>State: <%= campground.state %> </P>
+       
        
        
     </div>

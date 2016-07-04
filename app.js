@@ -16,27 +16,33 @@ var campgroundSchema = new mongoose.Schema({
     
    name: String,
    image: String,
+   latitude: Number,
+   longitude: Number,
+   state: String,
+   description: String
 });
 
-var Campground = mongoose.model('Camground', campgroundSchema);
+var Campground = mongoose.model('Campground', campgroundSchema);
 
-//Campground.create({
+/*Campground.create({
     
-//    name: "Kachess Lake", 
-//    image:"http://www.kachessridgeresort.com/uploads/1/0/2/5/10252907/1325803461.jpg"
+    name: "Kachess Lake", 
+    image:"http://www.kachessridgeresort.com/uploads/1/0/2/5/10252907/1325803461.jpg",
+    state: "Washington",
+    description:"Kachess Lake is a lake and reservoir along the course of the Kachess River in Washington state, US. The upper part of the lake, north of a narrows, is called Little Kachess Lake."
     
-//}, function(err, campground){
-//    if (err){
-//        
-//        console.log("Error creating new CG");
-//        console.log(err);
-//    }
-//    else{
-//        console.log("New CG added to db");
-//        console.log(campground);
-//    }
-// });
-
+}, function(err, campground){
+    if (err){
+        
+        console.log("Error creating new CG");
+        console.log(err);
+    }
+    else{
+        console.log("New CG added to db");
+        console.log(campground);
+    }
+ });
+*/
 
 
 
@@ -52,7 +58,7 @@ app.get('/', function(req, res){
     res.render("landing");
 })
 
-//Campgrounds page
+//Campgrounds page *INDEX ROUTE*
 app.get('/campgrounds', function(req, res){
        //Get all campgrounds from DB
        Campground.find({}, function(err, allCampgrounds){
@@ -60,7 +66,7 @@ app.get('/campgrounds', function(req, res){
              console.log(err);
           }
           else{
-             res.render("campgrounds", {campgrounds:allCampgrounds}); 
+             res.render("index", {campgrounds:allCampgrounds}); 
               
           }
            
@@ -68,13 +74,26 @@ app.get('/campgrounds', function(req, res){
        });
        
 })
-// add new campgrounds
+// add new campgrounds *CREATE route*
 app.post('/campgrounds', function(req, res){
     //get data from form and add to campgrounds array
     var name = req.body.name;
     var image = req.body.image;
+    var latitude = req.body.latitude;
+    var longitude = req.body.longitude;
+    var state = req.body.state;
+    var description = req.body.description; 
     //create new object to push into array
-    var newCampground = {name: name, image: image};
+    var newCampground = {
+        name: name, 
+        image: image,
+        latitude: latitude,
+        longitude: longitude,
+        state: state,
+        description: description
+        
+        
+    };
     
     //create new campground and save it to DB
     Campground.create(newCampground,function(err, newlyCreated){
@@ -90,9 +109,26 @@ app.post('/campgrounds', function(req, res){
     });
 
 })
-
+//*NEW route*
 app.get('/campgrounds/new', function(req, res){
     res.render('new.ejs');
+})
+
+
+// *SHOW route* 
+
+
+app.get('/campgrounds/:id', function(req, res) {
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("show.ejs", {campground: foundCampground})
+            
+        }
+        
+    })
 })
 
 
