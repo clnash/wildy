@@ -1,7 +1,9 @@
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
+var express    = require('express');
+var app        = express();
+var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
+//retrieve campground model
+    Campground = require('./models/campground');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -12,17 +14,7 @@ app.use(express.static('public'));
 mongoose.connect("mongodb://localhost/wildy");
 
 //SCHEMA SETUP
-var campgroundSchema = new mongoose.Schema({
-    
-   name: String,
-   image: String,
-   latitude: Number,
-   longitude: Number,
-   state: String,
-   description: String
-});
 
-var Campground = mongoose.model('Campground', campgroundSchema);
 
 /*Campground.create({
     
@@ -41,8 +33,8 @@ var Campground = mongoose.model('Campground', campgroundSchema);
         console.log("New CG added to db");
         console.log(campground);
     }
- });
-*/
+ });*/
+
 
 
 
@@ -83,6 +75,7 @@ app.post('/campgrounds', function(req, res){
     var longitude = req.body.longitude;
     var state = req.body.state;
     var description = req.body.description; 
+    var region = req.body.region;
     //create new object to push into array
     var newCampground = {
         name: name, 
@@ -90,7 +83,8 @@ app.post('/campgrounds', function(req, res){
         latitude: latitude,
         longitude: longitude,
         state: state,
-        description: description
+        description: description,
+        region: region
         
         
     };
